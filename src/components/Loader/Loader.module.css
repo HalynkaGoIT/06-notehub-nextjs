@@ -1,0 +1,21 @@
+.text {
+  font-size: 18px;
+  font-weight: 500;
+  color: #1976d2;
+  text-align: center;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.4;
+  }
+}
