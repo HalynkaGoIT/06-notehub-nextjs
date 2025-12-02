@@ -1,15 +1,15 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import css from "./NoteForm.module.css";
-import * as Yup from "yup";
-import type { createNoteRequest } from "@/types/note";
-import { createNote } from "@/lib/api";
-import toast from "react-hot-toast";
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import css from './NoteForm.module.css';
+import * as Yup from 'yup';
+import type { createNoteRequest } from '@/types/note';
+import { createNote } from '@/lib/api';
+import toast from 'react-hot-toast';
 import {
   ErrorMessage as FormikErrorMessage,
   Field,
   Form,
   Formik,
-} from "formik";
+} from 'formik';
 
 interface NoteFormProps {
   onClose: () => void;
@@ -19,19 +19,19 @@ const NoteForm = ({ onClose }: NoteFormProps) => {
 
   const validationSchema = Yup.object({
     title: Yup.string()
-      .required("Title is required")
-      .min(3, "Title must be at least 3 characters")
-      .max(50, "Title must be less than 50 characters"),
-    content: Yup.string().max(500, "Content must be less then 500 characters"),
+      .required('Title is required')
+      .min(3, 'Title must be at least 3 characters')
+      .max(50, 'Title must be less than 50 characters'),
+    content: Yup.string().max(500, 'Content must be less then 500 characters'),
     tag: Yup.string()
-      .oneOf(["Todo", "Work", "Personal", "Meeting", "Shopping"], "Invalid tag")
-      .required("Tag is required"),
+      .oneOf(['Todo', 'Work', 'Personal', 'Meeting', 'Shopping'], 'Invalid tag')
+      .required('Tag is required'),
   });
 
   const initialValues: createNoteRequest = {
-    title: "",
-    content: "",
-    tag: "Todo",
+    title: '',
+    content: '',
+    tag: 'Todo',
   };
 
   const handleSubmit = (values: createNoteRequest) => {
@@ -41,9 +41,9 @@ const NoteForm = ({ onClose }: NoteFormProps) => {
   const noteMutation = useMutation({
     mutationFn: createNote,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["notes"] });
+      queryClient.invalidateQueries({ queryKey: ['notes'] });
       onClose();
-      toast.success("Note was created");
+      toast.success('Note was created');
     },
   });
 

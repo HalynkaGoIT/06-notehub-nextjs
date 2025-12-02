@@ -1,9 +1,9 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import type { Note } from "@/types/note";
-import css from "./NoteList.module.css";
-import { deleteNote } from "@/lib/api";
-import toast from "react-hot-toast";
-import Link from "next/link";
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import type { Note } from '@/types/note';
+import css from './NoteList.module.css';
+import { deleteNote } from '@/lib/api';
+import toast from 'react-hot-toast';
+import Link from 'next/link';
 
 interface NoteListProps {
   notes: Note[];
@@ -18,8 +18,8 @@ const NoteList = ({ notes }: NoteListProps) => {
       return res;
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["notes"] });
-      toast.success("Note was deleted");
+      queryClient.invalidateQueries({ queryKey: ['notes'] });
+      toast.success('Note was deleted');
     },
   });
 
@@ -29,7 +29,7 @@ const NoteList = ({ notes }: NoteListProps) => {
 
   return (
     <ul className={css.list}>
-      {notes.map((note) => (
+      {notes.map(note => (
         <li key={note.id} className={css.listItem}>
           <h2 className={css.title}>{note.title}</h2>
           <p className={css.content}>{note.content}</p>

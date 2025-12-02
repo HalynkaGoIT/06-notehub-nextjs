@@ -1,25 +1,25 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import css from "./page.module.css";
-import { useDebounce } from "use-debounce";
-import { keepPreviousData, useQuery } from "@tanstack/react-query";
-import { fetchNotes } from "@/lib/api";
-import toast, { Toaster } from "react-hot-toast";
-import SearchBox from "@/components/SearchBox/SearchBox";
-import Pagination from "@/components/Pagination/Pagination";
-import Modal from "@/components/Modal/Modal";
-import NoteForm from "@/components/NoteForm/NoteForm";
-import NoteList from "@/components/NoteList/NoteList";
+import { useEffect, useState } from 'react';
+import css from './page.module.css';
+import { useDebounce } from 'use-debounce';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
+import { fetchNotes } from '@/lib/api';
+import toast, { Toaster } from 'react-hot-toast';
+import SearchBox from '@/components/SearchBox/SearchBox';
+import Pagination from '@/components/Pagination/Pagination';
+import Modal from '@/components/Modal/Modal';
+import NoteForm from '@/components/NoteForm/NoteForm';
+import NoteList from '@/components/NoteList/NoteList';
 
 const NoteClient = () => {
   const [page, setPage] = useState(1);
-  const [search, setSearch] = useState<string>("");
+  const [search, setSearch] = useState<string>('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [debouncedSearch] = useDebounce(search, 400);
 
   const { data, isSuccess } = useQuery({
-    queryKey: ["notes", page, debouncedSearch],
+    queryKey: ['notes', page, debouncedSearch],
     queryFn: () =>
       fetchNotes({
         page,
@@ -46,7 +46,7 @@ const NoteClient = () => {
 
   useEffect(() => {
     if (data && notesArr.length === 0) {
-      toast.error("No notes found for your request");
+      toast.error('No notes found for your request');
     }
   }, [data, notesArr.length, isSuccess, debouncedSearch]);
 

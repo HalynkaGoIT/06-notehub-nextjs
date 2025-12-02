@@ -1,5 +1,5 @@
-"use client";
-import css from "./error.module.css";
+'use client';
+import css from './error.module.css';
 
 interface Props {
   error: Error;
@@ -7,7 +7,7 @@ interface Props {
 }
 
 const ErrorNotes = ({ error, reset }: Props) => {
-  console.log("error", error);
+  console.log('error', error);
 
   return (
     <div className={css.wrapper}>
