@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { Note, createNoteRequest } from '../types/note';
+import type { Note, CreateNoteRequest } from '../types/note';
 
 const BASE_URL = 'https://notehub-public.goit.study/api';
 const myToken = process.env.NEXT_PUBLIC_NOTEHUB_TOKEN;
@@ -33,12 +33,12 @@ export const fetchNotes = async ({
   return res.data;
 };
 
-export const createNote = async (note: createNoteRequest): Promise<Note> => {
+export const createNote = async (note: CreateNoteRequest): Promise<Note> => {
   const res = await api.post<Note>('/notes', note);
   return res.data;
 };
 
-export const deleteNote = async (id: string): Promise<{ id: string }> => {
+export const deleteNote = async (id: string): Promise<Note> => {
   const res = await api.delete<Note>(`/notes/${id}`);
   return res.data;
 };
