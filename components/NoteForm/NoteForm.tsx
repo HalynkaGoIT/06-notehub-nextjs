@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import css from './NoteForm.module.css';
 import * as Yup from 'yup';
-import type { createNoteRequest } from '@/types/note';
+import type { CreateNoteRequest } from '@/types/note';
 import { createNote } from '@/lib/api';
 import toast from 'react-hot-toast';
 import {
@@ -28,13 +28,13 @@ const NoteForm = ({ onClose }: NoteFormProps) => {
       .required('Tag is required'),
   });
 
-  const initialValues: createNoteRequest = {
+  const initialValues: CreateNoteRequest = {
     title: '',
     content: '',
     tag: 'Todo',
   };
 
-  const handleSubmit = (values: createNoteRequest) => {
+  const handleSubmit = (values: CreateNoteRequest) => {
     noteMutation.mutate(values);
   };
 
