@@ -6,10 +6,10 @@ const Footer = () => {
       <div className={css.content}>
         <p>© {new Date().getFullYear()} NoteHub. All rights reserved.</p>
         <div className={css.wrap}>
-          <p>Developer: Aleksander Ievchuk</p>
+          <p>Developer: Halyna Obykhvost</p>
           <p>
             Contact us:
-            <a href="mailto:sashukman@gmail.com"> sashukman@gmail.com</a>
+            <a href="mailto:student@notehub.app"> student@notehub.app</a>
           </p>
         </div>
       </div>
